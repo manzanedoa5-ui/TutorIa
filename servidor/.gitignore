@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+.n8n-runtime/
+.n8n-data/
+*.log
+resultados/revision.sqlite3

@@ -1,0 +1,342 @@
+[
+  {
+    "id": "SIM-01857",
+    "semestre": 15,
+    "riesgo_estimado": 0.8545,
+    "senales": [
+      {
+        "variable": "promedio_previo",
+        "valor": 5.97,
+        "aporte_log_odds": 3.3411
+      },
+      {
+        "variable": "creditos_aprobados_previos",
+        "valor": 5,
+        "aporte_log_odds": 1.1019
+      }
+    ]
+  },
+  {
+    "id": "SIM-01878",
+    "semestre": 15,
+    "riesgo_estimado": 0.7267,
+    "senales": [
+      {
+        "variable": "promedio_previo",
+        "valor": 7.32,
+        "aporte_log_odds": 2.8052
+      },
+      {
+        "variable": "cursos_repetidos",
+        "valor": 3,
+        "aporte_log_odds": 1.0628
+      }
+    ]
+  },
+  {
+    "id": "SIM-01293",
+    "semestre": 15,
+    "riesgo_estimado": 0.6954,
+    "senales": [
+      {
+        "variable": "promedio_previo",
+        "valor": 7.4,
+        "aporte_log_odds": 2.7734
+      },
+      {
+        "variable": "cursos_repetidos",
+        "valor": 3,
+        "aporte_log_odds": 1.0628
+      }
+    ]
+  },
+  {
+    "id": "SIM-01191",
+    "semestre": 15,
+    "riesgo_estimado": 0.6657,
+    "senales": [
+      {
+        "variable": "promedio_previo",
+        "valor": 8.9,
+        "aporte_log_odds": 2.1779
+      },
+      {
+        "variable": "creditos_aprobados_previos",
+        "valor": 5,
+        "aporte_log_odds": 1.1019
+      }
+    ]
+  },
+  {
+    "id": "SIM-01296",
+    "semestre": 15,
+    "riesgo_estimado": 0.6655,
+    "senales": [
+      {
+        "variable": "promedio_previo",
+        "valor": 9.05,
+        "aporte_log_odds": 2.1184
+      },
+      {
+        "variable": "cursos_repetidos",
+        "valor": 4,
+        "aporte_log_odds": 1.4718
+      }
+    ]
+  },
+  {
+    "id": "SIM-01914",
+    "semestre": 15,
+    "riesgo_estimado": 0.6502,
+    "senales": [
+      {
+        "variable": "promedio_previo",
+        "valor": 7.47,
+        "aporte_log_odds": 2.7456
+      },
+      {
+        "variable": "cursos_repetidos",
+        "valor": 4,
+        "aporte_log_odds": 1.4718
+      }
+    ]
+  },
+  {
+    "id": "SIM-01800",
+    "semestre": 15,
+    "riesgo_estimado": 0.6451,
+    "senales": [
+      {
+        "variable": "promedio_previo",
+        "valor": 8.59,
+        "aporte_log_odds": 2.301
+      },
+      {
+        "variable": "cursos_repetidos",
+        "valor": 3,
+        "aporte_log_odds": 1.0628
+      }
+    ]
+  },
+  {
+    "id": "SIM-01434",
+    "semestre": 15,
+    "riesgo_estimado": 0.587,
+    "senales": [
+      {
+        "variable": "promedio_previo",
+        "valor": 7.59,
+        "aporte_log_odds": 2.698
+      },
+      {
+        "variable": "creditos_aprobados_previos",
+        "valor": 7,
+        "aporte_log_odds": 0.8997
+      }
+    ]
+  },
+  {
+    "id": "SIM-01659",
+    "semestre": 15,
+    "riesgo_estimado": 0.551,
+    "senales": [
+      {
+        "variable": "promedio_previo",
+        "valor": 7.63,
+        "aporte_log_odds": 2.6821
+      },
+      {
+        "variable": "cursos_repetidos",
+        "valor": 2,
+        "aporte_log_odds": 0.6539
+      }
+    ]
+  },
+  {
+    "id": "SIM-00918",
+    "semestre": 15,
+    "riesgo_estimado": 0.5475,
+    "senales": [
+      {
+        "variable": "promedio_previo",
+        "valor": 8.87,
+        "aporte_log_odds": 2.1898
+      },
+      {
+        "variable": "creditos_aprobados_previos",
+        "valor": 6,
+        "aporte_log_odds": 1.0008
+      }
+    ]
+  },
+  {
+    "id": "SIM-01727",
+    "semestre": 15,
+    "riesgo_estimado": 0.5343,
+    "senales": [
+      {
+        "variable": "promedio_previo",
+        "valor": 8.65,
+        "aporte_log_odds": 2.2772
+      },
+      {
+        "variable": "creditos_aprobados_previos",
+        "valor": 9,
+        "aporte_log_odds": 0.6976
+      }
+    ]
+  },
+  {
+    "id": "SIM-00798",
+    "semestre": 15,
+    "riesgo_estimado": 0.5273,
+    "senales": [
+      {
+        "variable": "promedio_previo",
+        "valor": 8.33,
+        "aporte_log_odds": 2.4042
+      },
+      {
+        "variable": "cursos_repetidos",
+        "valor": 2,
+        "aporte_log_odds": 0.6539
+      }
+    ]
+  },
+  {
+    "id": "SIM-01668",
+    "semestre": 15,
+    "riesgo_estimado": 0.5008,
+    "senales": [
+      {
+        "variable": "promedio_previo",
+        "valor": 8.51,
+        "aporte_log_odds": 2.3328
+      },
+      {
+        "variable": "creditos_aprobados_previos",
+        "valor": 9,
+        "aporte_log_odds": 0.6976
+      }
+    ]
+  },
+  {
+    "id": "SIM-01667",
+    "semestre": 15,
+    "riesgo_estimado": 0.4855,
+    "senales": [
+      {
+        "variable": "promedio_previo",
+        "valor": 8.93,
+        "aporte_log_odds": 2.166
+      },
+      {
+        "variable": "cursos_repetidos",
+        "valor": 3,
+        "aporte_log_odds": 1.0628
+      }
+    ]
+  },
+  {
+    "id": "SIM-01942",
+    "semestre": 15,
+    "riesgo_estimado": 0.4722,
+    "senales": [
+      {
+        "variable": "promedio_previo",
+        "valor": 9.14,
+        "aporte_log_odds": 2.0827
+      },
+      {
+        "variable": "creditos_aprobados_previos",
+        "valor": 9,
+        "aporte_log_odds": 0.6976
+      }
+    ]
+  },
+  {
+    "id": "SIM-01872",
+    "semestre": 15,
+    "riesgo_estimado": 0.4671,
+    "senales": [
+      {
+        "variable": "promedio_previo",
+        "valor": 9.34,
+        "aporte_log_odds": 2.0033
+      },
+      {
+        "variable": "cursos_repetidos",
+        "valor": 3,
+        "aporte_log_odds": 1.0628
+      }
+    ]
+  },
+  {
+    "id": "SIM-01928",
+    "semestre": 15,
+    "riesgo_estimado": 0.466,
+    "senales": [
+      {
+        "variable": "promedio_previo",
+        "valor": 9.37,
+        "aporte_log_odds": 1.9913
+      },
+      {
+        "variable": "creditos_aprobados_previos",
+        "valor": 7,
+        "aporte_log_odds": 0.8997
+      }
+    ]
+  },
+  {
+    "id": "SIM-01716",
+    "semestre": 15,
+    "riesgo_estimado": 0.4464,
+    "senales": [
+      {
+        "variable": "promedio_previo",
+        "valor": 9.98,
+        "aporte_log_odds": 1.7492
+      },
+      {
+        "variable": "creditos_aprobados_previos",
+        "valor": 7,
+        "aporte_log_odds": 0.8997
+      }
+    ]
+  },
+  {
+    "id": "SIM-01066",
+    "semestre": 15,
+    "riesgo_estimado": 0.4258,
+    "senales": [
+      {
+        "variable": "promedio_previo",
+        "valor": 8.75,
+        "aporte_log_odds": 2.2375
+      },
+      {
+        "variable": "creditos_aprobados_previos",
+        "valor": 7,
+        "aporte_log_odds": 0.8997
+      }
+    ]
+  },
+  {
+    "id": "SIM-01937",
+    "semestre": 15,
+    "riesgo_estimado": 0.4126,
+    "senales": [
+      {
+        "variable": "promedio_previo",
+        "valor": 9.21,
+        "aporte_log_odds": 2.0549
+      },
+      {
+        "variable": "creditos_aprobados_previos",
+        "valor": 6,
+        "aporte_log_odds": 1.0008
+      }
+    ]
+  }
+]

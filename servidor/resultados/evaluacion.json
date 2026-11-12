@@ -1,0 +1,39 @@
+{
+  "datos": "sinteticos",
+  "capacidad_por_semestre": 20,
+  "filas_entrenamiento": 2389,
+  "validacion": {
+    "roc_auc": 0.8865,
+    "average_precision": 0.5065,
+    "brier": 0.0618,
+    "prevalencia": 0.0918,
+    "comparacion_por_semestre": [
+      {
+        "semestre": 10,
+        "estudiantes": 610,
+        "deserciones": 56,
+        "alertas_modelo": 20,
+        "aciertos_modelo": 14,
+        "alertas_regla": 20,
+        "aciertos_regla": 14
+      }
+    ]
+  },
+  "prueba": {
+    "roc_auc": 0.8769,
+    "average_precision": 0.4954,
+    "brier": 0.052,
+    "prevalencia": 0.0763,
+    "comparacion_por_semestre": [
+      {
+        "semestre": 13,
+        "estudiantes": 603,
+        "deserciones": 46,
+        "alertas_modelo": 20,
+        "aciertos_modelo": 13,
+        "alertas_regla": 20,
+        "aciertos_regla": 12
+      }
+    ]
+  }
+}

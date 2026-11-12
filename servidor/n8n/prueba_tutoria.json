@@ -1,0 +1,35 @@
+{
+  "name": "TutorIA - probar el modelo local",
+  "nodes": [
+    {
+      "id": "1ecac747-61e8-4f90-8088-b5559b407ca0",
+      "name": "Iniciar prueba",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 0],
+      "parameters": {}
+    },
+    {
+      "id": "1ecac747-61e8-4f90-8088-b5559b407ca1",
+      "name": "Calcular casos en FastAPI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [240, 0],
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8000/events",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{}",
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Iniciar prueba": {
+      "main": [[{"node": "Calcular casos en FastAPI", "type": "main", "index": 0}]]
+    }
+  },
+  "settings": {"executionOrder": "v1"},
+  "active": false
+}

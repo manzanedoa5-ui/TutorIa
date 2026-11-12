@@ -1,0 +1,159 @@
+{
+  "name": "TutorIA - cola de revisión",
+  "nodes": [
+    {
+      "id": "75672416-8939-4ac6-b5b0-7892564af000",
+      "name": "Inicio manual",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "75672416-8939-4ac6-b5b0-7892564af001",
+      "name": "Calcular casos en FastAPI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8000/events",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{}",
+        "options": {
+          "timeout": 15000
+        }
+      }
+    },
+    {
+      "id": "75672416-8939-4ac6-b5b0-7892564af002",
+      "name": "Separar casos",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        480,
+        0
+      ],
+      "parameters": {
+        "fieldToSplitOut": "casos",
+        "options": {}
+      }
+    },
+    {
+      "id": "75672416-8939-4ac6-b5b0-7892564af003",
+      "name": "Preparar revisión",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        0
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "return $input.all().map(({ json }) => {\n  const { id, semestre, riesgo_estimado } = json.casos ?? json;\n  return { json: { id, semestre, riesgo_estimado } };\n});"
+      }
+    },
+    {
+      "id": "75672416-8939-4ac6-b5b0-7892564af004",
+      "name": "Registrar casos",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        960,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8000/review-queue",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "timeout": 15000
+        }
+      }
+    },
+    {
+      "id": "75672416-8939-4ac6-b5b0-7892564af005",
+      "name": "Resumen de ejecución",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1200,
+        0
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const casos = $input.all().map(item => item.json);\nconst nuevos = casos.filter(caso => caso.nuevo).length;\nreturn [{ json: {\n  procesados: casos.length,\n  nuevos,\n  existentes: casos.length - nuevos,\n  pendientes: casos.filter(caso => caso.estado === 'pendiente').length,\n  casos,\n} }];"
+      }
+    }
+  ],
+  "connections": {
+    "Inicio manual": {
+      "main": [
+        [
+          {
+            "node": "Calcular casos en FastAPI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calcular casos en FastAPI": {
+      "main": [
+        [
+          {
+            "node": "Separar casos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Separar casos": {
+      "main": [
+        [
+          {
+            "node": "Preparar revisión",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar revisión": {
+      "main": [
+        [
+          {
+            "node": "Registrar casos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Registrar casos": {
+      "main": [
+        [
+          {
+            "node": "Resumen de ejecución",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false
+}
