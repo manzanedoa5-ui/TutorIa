@@ -5,26 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F4F4F9">
+    android:background="@color/unmsm_cream_light">
 
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#800000"
+        android:background="@color/unmsm_maroon"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingHorizontal="12dp"
-        android:paddingVertical="12dp">
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="16dp">
 
         <ImageButton
             android:id="@+id/btnBack"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:src="@drawable/ic_back"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Volver"
-            android:layout_marginEnd="8dp"/>
+            android:layout_marginEnd="12dp"/>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -36,23 +36,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="AL-0000"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textSize="22sp"
                 android:textStyle="bold" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Ficha del Alumno"
-                android:textColor="#E0E0E0"
-                android:textSize="12sp" />
+                android:textColor="@color/unmsm_cream"
+                android:textSize="14sp" />
         </LinearLayout>
+        <ImageButton
+            android:id="@+id/btnEdit"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@android:drawable/ic_menu_edit"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Editar"
+            app:tint="@color/white" />
     </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:padding="12dp">
+        android:padding="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,30 +71,30 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="1dp"
-                app:cardBackgroundColor="#FFFFFF">
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/white">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="20dp">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Métricas Actuales"
-                        android:textSize="14sp"
+                        android:text="Resumen Académico"
+                        android:textSize="16sp"
                         android:textStyle="bold"
-                        android:textColor="#333333"
-                        android:layout_marginBottom="8dp"/>
+                        android:textColor="@color/text_primary"
+                        android:layout_marginBottom="12dp"/>
                     <TextView
                         android:id="@+id/tvAcademicInfo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="13sp"
-                        android:textColor="#555555"
-                        android:lineSpacingExtra="4dp"/>
+                        android:textSize="14sp"
+                        android:textColor="@color/text_secondary"
+                        android:lineSpacingExtra="6dp"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -94,30 +102,30 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="1dp"
-                app:cardBackgroundColor="#FFFFFF">
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/white">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="20dp">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Estado de Riesgo"
-                        android:textSize="14sp"
+                        android:text="Alerta de Seguimiento"
+                        android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="#D32F2F"
-                        android:layout_marginBottom="8dp"/>
+                        android:layout_marginBottom="12dp"/>
                     <TextView
                         android:id="@+id/tvAlertInfo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="13sp"
-                        android:textColor="#555555"
-                        android:lineSpacingExtra="4dp"/>
+                        android:textSize="14sp"
+                        android:textColor="@color/text_secondary"
+                        android:lineSpacingExtra="6dp"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -125,23 +133,23 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="1dp"
-                app:cardBackgroundColor="#FFFFFF">
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/white">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="20dp">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Evolución Histórica (Promedios)"
-                        android:textSize="14sp"
+                        android:text="Historial de Promedios"
+                        android:textSize="16sp"
                         android:textStyle="bold"
-                        android:textColor="#333333"
-                        android:layout_marginBottom="12dp"/>
+                        android:textColor="@color/text_primary"
+                        android:layout_marginBottom="16dp"/>
                     <LinearLayout
                         android:id="@+id/llHistory"
                         android:layout_width="match_parent"

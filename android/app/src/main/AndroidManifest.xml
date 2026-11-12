@@ -27,6 +27,10 @@
         <activity
             android:name=".StudentActivity"
             android:exported="false" />
+        <activity
+            android:name=".AddEditStudentActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

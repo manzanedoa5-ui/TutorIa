@@ -5,53 +5,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F4F4F9">
+    android:background="@color/unmsm_cream_light">
 
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#800000"
+        android:background="@color/unmsm_maroon"
         android:orientation="vertical"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="12dp">
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="16dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TutorIA - Panel de Administración"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:text="@string/dashboard_title"
+            android:textColor="@color/white"
+            android:textSize="22sp"
             android:textStyle="bold" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Métricas y Seguimiento Estudiantil"
-            android:textColor="#E0E0E0"
-            android:textSize="12sp" />
+            android:text="@string/dashboard_university"
+            android:textColor="@color/unmsm_cream"
+            android:textSize="14sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dashboard_purpose"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:layout_marginTop="4dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Demo con datos sintéticos"
+            android:textColor="#BBBBBB"
+            android:textSize="11sp"
+            android:layout_marginTop="4dp" />
     </LinearLayout>
 
     <!-- Resumen (Dashboard) -->
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="12dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="8dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="2dp"
-        app:cardBackgroundColor="#FFFFFF">
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="12dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="3dp"
+        app:cardBackgroundColor="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="12dp">
+            android:padding="16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="12dp"
                 android:gravity="center_vertical">
                 <TextView
                     android:layout_width="0dp"
@@ -59,16 +73,16 @@
                     android:layout_weight="1"
                     android:text="Resumen del Periodo"
                     android:textStyle="bold"
-                    android:textSize="14sp"
-                    android:textColor="#333333"/>
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary"/>
                 <ImageButton
                     android:id="@+id/btnRefresh"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:src="@android:drawable/ic_popup_sync"
                     android:contentDescription="Actualizar"
-                    app:tint="#800000"/>
+                    app:tint="@color/unmsm_maroon"/>
             </LinearLayout>
 
             <LinearLayout
@@ -86,16 +100,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Total Alumnos"
-                        android:textSize="11sp"
-                        android:textColor="#666666"/>
+                        android:textSize="12sp"
+                        android:textColor="@color/text_secondary"/>
                     <TextView
                         android:id="@+id/tvTotalStudents"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="0"
                         android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="#000000"/>
+                        android:textSize="20sp"
+                        android:textColor="@color/text_primary"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -107,16 +121,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Promedio Gral."
-                        android:textSize="11sp"
-                        android:textColor="#666666"/>
+                        android:textSize="12sp"
+                        android:textColor="@color/text_secondary"/>
                     <TextView
                         android:id="@+id/tvGlobalAvg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="0.0"
                         android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="#800000"/>
+                        android:textSize="20sp"
+                        android:textColor="@color/unmsm_maroon"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -128,15 +142,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="En Riesgo"
-                        android:textSize="11sp"
-                        android:textColor="#666666"/>
+                        android:textSize="12sp"
+                        android:textColor="@color/text_secondary"/>
                     <TextView
                         android:id="@+id/tvAtRiskCount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="0"
                         android:textStyle="bold"
-                        android:textSize="18sp"
+                        android:textSize="20sp"
                         android:textColor="#D32F2F"/>
                 </LinearLayout>
             </LinearLayout>
@@ -148,8 +162,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingHorizontal="16dp"
-        android:paddingBottom="4dp">
+        android:paddingHorizontal="20dp"
+        android:paddingBottom="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -161,18 +175,18 @@
                 android:id="@+id/etSearch"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="48dp"
+                android:layout_height="52dp"
                 android:background="@android:drawable/editbox_background_normal"
-                android:paddingHorizontal="12dp"
+                android:paddingHorizontal="16dp"
                 android:hint="Buscar alumno (ej. AL-01857)"
                 android:inputType="text"
-                android:textSize="13sp"/>
+                android:textSize="14sp"/>
 
             <Spinner
                 android:id="@+id/spinnerSemester"
                 android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_marginStart="8dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="12dp"
                 android:background="@android:drawable/btn_dropdown"/>
         </LinearLayout>
 
@@ -181,8 +195,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mostrar solo alumnos priorizados (Con alerta)"
-            android:textSize="13sp"
-            android:layout_marginTop="4dp"/>
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"/>
     </LinearLayout>
 
     <ProgressBar
@@ -200,14 +214,14 @@
         android:orientation="vertical"
         android:gravity="center"
         android:visibility="gone"
-        android:padding="16dp">
+        android:padding="20dp">
         <TextView
             android:id="@+id/tvErrorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No se pudo conectar a la API"
             android:textColor="#D32F2F"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="12dp"/>
         <Button
             android:id="@+id/btnRetry"
             android:layout_width="wrap_content"
@@ -215,25 +229,40 @@
             android:text="Reintentar"/>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvEmpty"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sin casos registrados"
-        android:visibility="gone"
-        android:textColor="#888888"
-        android:gravity="center"
-        android:padding="16dp"/>
-
-    <ListView
-        android:id="@+id/listView"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:divider="@null"
-        android:dividerHeight="0dp"
-        android:clipToPadding="false"
-        android:paddingHorizontal="12dp"
-        android:paddingBottom="12dp"/>
+        android:layout_weight="1">
 
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:clipToPadding="false"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="88dp"/>
+
+        <TextView
+            android:id="@+id/tvEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sin casos registrados"
+            android:visibility="gone"
+            android:textColor="@color/text_secondary"
+            android:gravity="center"
+            android:padding="20dp"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAddStudent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:src="@android:drawable/ic_input_add"
+            app:tint="@color/white"
+            app:backgroundTint="@color/unmsm_maroon"
+            android:contentDescription="Nuevo estudiante" />
+    </FrameLayout>
 </LinearLayout>

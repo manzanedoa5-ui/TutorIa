@@ -1,5 +1,6 @@
 package com.catalogoturismocusco.tutoria
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.ImageButton
@@ -35,6 +36,8 @@ class StudentActivity : AppCompatActivity() {
         findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
             finish()
         }
+        
+        val btnEdit = findViewById<ImageButton>(R.id.btnEdit)
 
         val tvStudentId = findViewById<TextView>(R.id.tvStudentId)
         val tvAcademicInfo = findViewById<TextView>(R.id.tvAcademicInfo)
@@ -48,10 +51,24 @@ class StudentActivity : AppCompatActivity() {
 
         val record = DataRepository.studentRecords.find { it.id == studentId && it.semestre == currentSemester }
         if (record != null) {
+            val titleText = if (record.fullName.isNotEmpty()) {
+                "${formatStudentId(studentId)}\n${record.fullName}"
+            } else {
+                formatStudentId(studentId)
+            }
+            tvStudentId.text = titleText
+            
             tvAcademicInfo.text = "• Promedio previo: ${record.promedioPrevio}\n" +
                     "• Créditos aprobados previos: ${record.creditosAprobadosPrevios}\n" +
                     "• Cursos repetidos: ${record.cursosRepetidos}\n" +
                     "• Carga académica actual: ${record.cargaActual}"
+                    
+            btnEdit.setOnClickListener {
+                val intent = Intent(this, AddEditStudentActivity::class.java)
+                intent.putExtra("student_id", record.id)
+                intent.putExtra("semestre", record.semestre)
+                startActivity(intent)
+            }
         }
 
         val alert = DataRepository.currentApiAlerts.find { it.id == studentId }
@@ -63,7 +80,11 @@ class StudentActivity : AppCompatActivity() {
             tvAlertInfo.text = "Riesgo estimado: $riesgoStr\nEstado: ${alert.estado}"
             tvAlertInfo.setTextColor(Color.parseColor("#555555"))
         } else {
-            tvAlertInfo.text = "Sin alerta registrada en este periodo."
+            if (record?.isLocal == true) {
+                tvAlertInfo.text = "Sin evaluación de riesgo"
+            } else {
+                tvAlertInfo.text = "Sin alerta registrada en este periodo."
+            }
             tvAlertInfo.setTextColor(Color.parseColor("#4CAF50"))
         }
 

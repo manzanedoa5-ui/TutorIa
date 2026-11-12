@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="unmsm_maroon">#7B001F</color>
+    <color name="unmsm_maroon_light">#9E002B</color>
+    <color name="unmsm_cream">#FDF5E6</color>
+    <color name="unmsm_cream_light">#FFFDF5</color>
+    <color name="text_primary">#333333</color>
+    <color name="text_secondary">#666666</color>
 </resources>

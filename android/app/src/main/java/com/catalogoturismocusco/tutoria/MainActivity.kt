@@ -92,6 +92,10 @@ class MainActivity : AppCompatActivity() {
         btnRefresh.setOnClickListener { fetchApiData(currentSemester) }
         btnRetry.setOnClickListener { fetchApiData(currentSemester) }
 
+        findViewById<View>(R.id.fabAddStudent).setOnClickListener {
+            startActivity(Intent(this, AddEditStudentActivity::class.java))
+        }
+
         listView.setOnItemClickListener { _, _, position, _ ->
             val record = filteredList[position]
             val intent = Intent(this, StudentActivity::class.java)
@@ -104,6 +108,19 @@ class MainActivity : AppCompatActivity() {
         fetchApiData(currentSemester)
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (DataRepository.dataLoaded) {
+            DataRepository.refreshMergedRecords(this)
+            val newSemesters = DataRepository.studentRecords.map { it.semestre }.distinct().sortedDescending()
+            if (newSemesters != allSemesters) {
+                allSemesters = newSemesters
+                updateSpinner()
+            }
+            applyFilters()
+        }
+    }
+
     private fun fetchApiData(semester: Int) {
         progressBar.visibility = View.VISIBLE
         listView.visibility = View.GONE
@@ -113,32 +130,20 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             try {
                 val alerts = withContext(Dispatchers.IO) {
-                    val host = when (android.os.Build.HARDWARE) {
-                        "ranchu", "goldfish" -> "10.0.2.2"
-                        else -> "127.0.0.1" // Celular físico: adb reverse tcp:8000 tcp:8000
+                    val json = try {
+                        leerCola("127.0.0.1", semester)
+                    } catch (error: java.io.IOException) {
+                        if (android.os.Build.HARDWARE !in setOf("ranchu", "goldfish")) throw error
+                        leerCola("10.0.2.2", semester)
                     }
-                    val url = URL("http://$host:8000/review-queue?semestre=$semester")
-                    val connection = url.openConnection() as HttpURLConnection
-                    connection.requestMethod = "GET"
-                    connection.connectTimeout = 5000
-                    connection.readTimeout = 5000
-                    
-                    if (connection.responseCode == HttpURLConnection.HTTP_OK) {
-                        val jsonString = connection.inputStream.bufferedReader().use { it.readText() }
-                        val jsonArray = JSONArray(jsonString)
-                        val list = mutableListOf<ApiAlert>()
-                        for (i in 0 until jsonArray.length()) {
-                            val obj = jsonArray.getJSONObject(i)
-                            list.add(ApiAlert(
-                                id = obj.getString("id"),
-                                semestre = obj.getInt("semestre"),
-                                riesgoEstimado = obj.getDouble("riesgo_estimado"),
-                                estado = obj.getString("estado")
-                            ))
-                        }
-                        list
-                    } else {
-                        throw Exception("HTTP error ${connection.responseCode}")
+                    List(json.length()) { index ->
+                        val item = json.getJSONObject(index)
+                        ApiAlert(
+                            id = item.getString("id"),
+                            semestre = item.getInt("semestre"),
+                            riesgoEstimado = item.getDouble("riesgo_estimado"),
+                            estado = item.getString("estado")
+                        )
                     }
                 }
                 DataRepository.currentApiAlerts = alerts
@@ -152,6 +157,20 @@ class MainActivity : AppCompatActivity() {
                 DataRepository.currentApiAlerts = emptyList()
                 applyFilters() // apply filters will use empty list
             }
+        }
+    }
+
+    private fun leerCola(host: String, semester: Int): JSONArray {
+        val url = URL("http://$host:8000/review-queue?semestre=$semester")
+        val connection = url.openConnection() as HttpURLConnection
+        return try {
+            connection.connectTimeout = 5000
+            connection.readTimeout = 5000
+            val status = connection.responseCode
+            check(status == HttpURLConnection.HTTP_OK) { "HTTP error $status" }
+            JSONArray(connection.inputStream.bufferedReader().use { it.readText() })
+        } finally {
+            connection.disconnect()
         }
     }
 
@@ -223,7 +242,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun applyFilters() {
         val rawQuery = etSearch.text.toString().trim().lowercase()
-        val query = rawQuery.replace("al-", "sim-")
+        val idQuery = rawQuery.replace("al-", "sim-")
         val onlyAlerts = cbAlertsOnly.isChecked
 
         val semesterRecords = DataRepository.studentRecords.filter { it.semestre == currentSemester }
@@ -239,7 +258,7 @@ class MainActivity : AppCompatActivity() {
 
         filteredList.clear()
         filteredList.addAll(semesterRecords.filter { record ->
-            val matchQuery = record.id.lowercase().contains(query)
+            val matchQuery = record.id.lowercase().contains(idQuery) || record.fullName.lowercase().contains(rawQuery)
             val matchAlert = !onlyAlerts || alertsForSemester.contains(record.id)
             matchQuery && matchAlert
         })
@@ -265,7 +284,11 @@ class MainActivity : AppCompatActivity() {
             val tvAlertBadge = view.findViewById<TextView>(R.id.tvAlertBadge)
             
             val record = dataSource[position]
-            tvCode.text = formatStudentId(record.id)
+            var title = formatStudentId(record.id)
+            if (record.fullName.isNotEmpty()) {
+                title += " - ${record.fullName}"
+            }
+            tvCode.text = title
             tvInfo.text = "Promedio previo: ${record.promedioPrevio} | Créditos aprobados: ${record.creditosAprobadosPrevios}"
             
             val alertsForSemester = DataRepository.currentApiAlerts.map { it.id }.toSet()
